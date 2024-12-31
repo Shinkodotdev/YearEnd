@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <title>2025</title>
+</head>
+
+<body>
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="BGMUSIC.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <section class="fireworks">
+        <div class="fireworks-container">
+	    <canvas id='canvas'>Canvas is not supported in your browser.<canvas>
+        </div>
+            <div class="greetings">
+                <h1>Happy New Year</h1>
+            </div>
+    </section>
+    <section class="countdown">
+        <div class="middle">
+        <h1 class="label">Happy New Year Mhizzy!</h1>
+        <div class="time">
+            <span><div id="d">00</div>Days</span>
+            <span><div id="h">00</div>Hours</span>
+            <span><div id="m">00</div>Minutes</span>
+            <span><div id="s">00</div>Seconds</span>
+        </div>
+    <div class="col-12 align-self-center">
+        <div class="section text-center">
+            <h4 class="pb-4">Click to unlock next step</h4>
+            <input class="checkbox-tool" type="checkbox" name="tools" id="tool">
+            <label for="tool">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            </label>
+            <br>
+            <button type="button" class="btn mt-5" id="Images">Images</button>
+            <button type="button" class="btn mt-5" id="Messages">Messages</button>
+        </div>
+    </div>
+</div>
+    </section>
+        
+<script src="script.js"></script>
+<script>
+    window.addEventListener("beforeunload", () => {
+        const audio = document.getElementById('backgroundMusic');
+        localStorage.setItem('audioPlaying', audio.paused ? 'false' : 'true');
+    });
+
+    document.getElementById("Images").addEventListener("click", () => {
+        window.location.href = "Memories.html";
+    });
+    document.getElementById("Messages").addEventListener("click", () => {
+        window.location.href = "message.html";
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('backgroundMusic');
+        // Check if audio was previously playing and resume
+        if (localStorage.getItem('audioPlaying') === 'true') {
+            audio.play();
+        }
+        document.body.addEventListener('click', () => {
+            audio.play();
+        }, { once: true });
+    });
+</script>
+</body>
+
+</html>
